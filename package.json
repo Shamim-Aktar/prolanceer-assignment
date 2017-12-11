@@ -1,0 +1,23 @@
+{
+  "name": "assignment-angularjs-dev",
+  "version": "1.0.0",
+  "description": "* Create a simple program which fetches the exchange rate of all crypto currencies in USD and displays them using Bar Chart\r * The program should refresh the data after every 5 minutes\r * You can use following public api to get the data: https://api.coinmarketcap.com/v1/ticker/?limit=10. \r * You can read more about this api here: https://coinmarketcap.com/api/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prolanceer/assignment-angularjs-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prolanceer/assignment-angularjs-dev/issues"
+  },
+  "homepage": "https://github.com/Prolanceer/assignment-angularjs-dev#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

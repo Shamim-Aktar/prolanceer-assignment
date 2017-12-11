@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	
+	</title>
+	
+</head>
+<body ng-app="myChart" ng-controller="BarCtrl">
+<canvas id="bar-chart" width="800" height="400" ></canvas>
+   
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="angular-chart.js"></script>
+
+
+<script type="text/javascript">
+
+
+
+var chartdata;
+
+var symbols=[];
+var usd_price=[];
+	var app =angular.module('myChart',[]);
+
+;
+
+	app.controller('BarCtrl',function($scope,$http){
+
+		$http({
+			type:'GET',
+			url:'https://api.coinmarketcap.com/v1/ticker/?limit=10'
+		}).then(function(response){
+			
+			var json=response;
+			console.log(json);
+			console.log(json.data[0].price_usd);
+
+			for(var i=0;i<json.data.length;i++)
+
+			{
+				console.log(json.data[i].symbol)
+
+				symbols.push(json.data[i].symbol);
+				usd_price.push(json.data[i].price_usd)
+				console.log(symbols);
+			}
+			//console.log(json.data.symbol);
+
+
+
+
+	setInterval(function() {
+
+new Chart(document.getElementById("bar-chart"),{
+
+				type:'bar',
+				data:{
+					
+						labels:symbols,
+				/*	labels:[json.data[0].symbol,json.data[1].symbol,json.data[2].symbol,json.data[3].symbol,json.data[4].symbol,json.data[5].symbol,json.data[6].symbol,json.data[7].symbol,json.data[8].symbol,json.data[9].symbol],*/
+						datasets:[{
+							label:"Values(in usd)",
+					backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
+					data: usd_price
+
+
+
+				
+						}]
+					
+				
+				},   options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Currency conversion chart in usd value'
+      }
+    }
+
+			})
+		})
+
+	})
+},300000);
+
+  
+</script>
+</body>
+</html>
